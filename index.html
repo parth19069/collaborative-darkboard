@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="static/index.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Darkboard</title>
 </head>
 <body>
-    
-    <!-- <form action="" id="form">
-        <input type="text" id="message">
-        <input type="submit">
-    </form>
+	<div id = "eraserIcon"></div>
+	<div id="container">
+		<nav class="nav flex-column unselectable">
+			<a class="nav-link active p-1" href="#"><input type="color" id="color-picker"></a>
+			<a class="nav-link p-1" id="clearer">Clear</a>
+			<a class="nav-link p-1" id="eraser">Eraser</a>
+			<a class="nav-link p-1" id="pen">Pen</a>
+		</nav>
+		<canvas id="canvas"></canvas>
+	</div>
 
-    <div id="messages">
 
-    </div> -->
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="static/index.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="static/index.js"></script>
+	
 </body>
 </html>

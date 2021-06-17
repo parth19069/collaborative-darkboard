@@ -9,17 +9,24 @@ const io = new Server(server);
 app.use("/static", express.static('./static/'));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('mouse position', (pos) => {
-    io.emit('mouse position', pos);
-    // console.log("great");
-  });
-});
+	console.log('a user connected');
+	socket.on('mouse position', (pos) => {
+		socket.broadcast.emit('mouse position', pos);
+		// console.log("great");
+	});
+	socket.on('clear', () => {
+		socket.broadcast.emit('clear');		
+	});
+}); 
 
-server.listen(process.env.PORT || 80, () => {
-  console.log('listening on *:3000');
+// server.listen(process.env.PORT || 80, () => {
+//   console.log('listening on *:3000');
+// });
+
+server.listen(3000, () => {
+	console.log('listening on *:3000');
 });
