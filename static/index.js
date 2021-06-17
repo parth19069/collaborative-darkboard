@@ -7,6 +7,8 @@ var eraserRadius = 70;
 var penRadius = 10;
 var eraserIconWidth = eraserRadius;
 var eraserIconHeight = eraserRadius;
+var penSize = document.getElementById('penSize');
+var eraserSize = document.getElementById('eraserSize');
 
 // var canvas = document.createElement('canvas');
 var canvas = document.getElementById('canvas');
@@ -62,6 +64,15 @@ function erase(e) {
 	isEraser = true;
 	isPen = true;
 	eraserIcon.style.display = "block";
+	var width = eraserSize.value;
+	if(width == '') {
+		width = '0';
+	}
+	width = parseInt(width);
+	eraserIconWidth = width;
+	eraserIconHeight = width;
+	eraserIcon.style.width = width + 'px';
+	eraserIcon.style.height = width + 'px'; 
 }
 
 function startPen(e) {
@@ -84,8 +95,8 @@ function setPosition(e) {
 
 // resize canvas
 function resize() {
-	// ctx.canvas.width = window.innerWidth;
-	// ctx.canvas.height = window.innerHeight;
+	ctx.canvas.width = window.innerWidth;
+	ctx.canvas.height = window.innerHeight;
 }
 
 
@@ -131,15 +142,25 @@ function draw(e) {
 	ctx.beginPath(); // begin
 	
 	if(!isEraser) {
+		var width = penSize.value;
+		if(width == '') {
+			width = '0';
+		}
+		width = parseInt(width);
 		currentStrokeStyle = colorPicker.value;
-		currentLineWidth = penRadius;
+		currentLineWidth = width;
 		currentLineCap = 'round';
 		ctx.lineWidth = currentLineWidth;
 		ctx.lineCap = currentLineCap;
 		ctx.strokeStyle = currentStrokeStyle;
 	} else {
+		var width = eraserSize.value;
+		if(width == '') {
+			width = '0';
+		}
+		width = parseInt(width);
 		currentStrokeStyle = '#383836';
-		currentLineWidth = eraserRadius;
+		currentLineWidth = width;
 		currentLineCap = 'round';
 		ctx.lineWidth = currentLineWidth;
 		ctx.lineCap = currentLineCap;
